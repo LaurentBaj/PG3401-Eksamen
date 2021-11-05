@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "tools.h"
 
-
-
-int toDecimal(char x);
 
 
 int main()
@@ -39,13 +37,4 @@ int main()
     fclose(encoded_file); 
     fclose(decoded_file); 
     return 0; 
-}
-
-// Function that converts hex value to a decimal
-// Function is adapted from: https://codescracker.com/c/program/c-program-convert-hexadecimal-to-decimal.htm
-int toDecimal(char x)
-{
-    if(x>='0' && x<='9') return x-'0';
-    else if(x>='A' && x<='Z') return x-'A'+10;
-    else if(x>='a' && x<='z') return x-'a'+10;
 }
