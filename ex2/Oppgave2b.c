@@ -3,28 +3,29 @@
 
 int main()
 {
-	FILE* file = fopen("encoded_text.txt", "r");
-    char array[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
-    
-    /*if (file != NULL)
-    {
-        while ((buff = fgetc(file)) != EOF) 
+	FILE* file;
+    char arrayS[] = "abcdefghijklmnopqrstuvwxyzæøå"; 
+    char arrayB[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ"; 
+    int i, counter;
+    char a; 
+ 
+    file = fopen("fasit.txt", "r"); 
+    if (file != NULL)
+    { 
+        for (i = 0; i < sizeof(arrayB) - 7; i++)
         {
-            putchar(buff);
-        }
-    } */
-
-    int i, j, len = sizeof(array); 
-    for (i = 0; i < len; i++)
-    {
-        int counter = 0; 
-        for (j = 0; j < len; j++)
-        {
-            if (array[j] == array[i])
+            counter = 0; 
+            while ((a = getc(file)) != EOF)
             {
-                counter++;         
+                if (a == arrayB[i] || a == arrayS[i]) 
+                {
+                    counter++;
+                }      
             }
-        } 
-        printf("%c occured: %d times\n", array[i], counter); 
+
+            printf("The letters: %c%c: appeared %d times\n", arrayB[i], arrayS[i], counter); 
+            rewind(file);
+        }   
     }
+    fclose(file); 
 }
