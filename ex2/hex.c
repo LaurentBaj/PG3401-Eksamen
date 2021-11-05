@@ -22,17 +22,34 @@ int getDec(int x)
 
 int main()
 {
-    FILE *f; 
-    char c[2]; 
+    FILE *encoded_file, *decoded_file; 
+    char c[2], buffer; 
 
-    f = fopen("hex.txt", "r");
-    while (!feof(f))
+    // Open hex.txt for reading - decoded_file.txt for writing
+    encoded_file = fopen("hex.txt", "r");
+    decoded_file = fopen("decoded_file.txt", "w"); 
+
+    if (encoded_file != NULL)
     {
-        c[0] = fgetc(f);
-        c[1] = fgetc(f);
-        int left = getDec(c[0]) * 16; 
-        int right = getDec(c[1]); 
-        printf("%c", left + right);
+        /*
+            Go through hex.txt
+            For each iteration: 
+                - Convert each hex pair to a decimal
+                - Convert decimal to char + write to file 
+        */
+        while (!feof(encoded_file))
+        {        
+            
+            c[0] = fgetc(encoded_file);
+            c[1] = fgetc(encoded_file);
+            int left = getDec(c[0]) * 16; 
+            int right = getDec(c[1]);
+
+            buffer = left + right; 
+            //printf("%c", buffer); 
+		    fwrite (&buffer, sizeof(char), 1, decoded_file);
+        }
     }
-    fclose(f); 
+    fclose(encoded_file); 
+    fclose(decoded_file); 
 }
