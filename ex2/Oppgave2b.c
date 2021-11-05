@@ -1,9 +1,17 @@
 #include <stdio.h>
 
 
+void print_char_occurence(FILE *file);
+
+
 int main()
 {
 	FILE* file;
+    print_contents(file); 
+}
+
+void print_char_occurence(FILE *file)
+{
     char arrayS[] = "abcdefghijklmnopqrstuvwxyzæøå"; 
     char arrayB[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ"; 
     int i, counter;
