@@ -1,27 +1,34 @@
 #include <stdio.h>
 
 
-void print_char_occurence(FILE *file)
+// Print char occurence dynamically (pass in which file you'd like)
+void print_char_occurence(FILE *file, char* path)
 {
+
+    // Arrays to compare the contents of the file
     char arrayS[] = "abcdefghijklmnopqrstuvwxyzæøå"; 
     char arrayB[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ"; 
     int i, counter;
     char a; 
  
-    file = fopen("fasit.txt", "r"); 
+    file = fopen(path, "r"); 
     if (file != NULL)
     { 
+        /* 
+            Loop though the alphabet once
+            Count occurence of each letter in file 
+        */
         for (i = 0; i < sizeof(arrayB) - 7; i++)
         {
             counter = 0; 
             while ((a = getc(file)) != EOF)
             {
-                if (a == arrayB[i] || a == arrayS[i]) 
-                {
-                    counter++;
-                }      
+                /* 
+                    Compare current char in file 
+                    to the current letter(upper- and lower-case)
+                */
+                if (a == arrayB[i] || a == arrayS[i]) counter++;
             }
-
             printf("The letters: %c%c: appeared %d times\n", arrayB[i], arrayS[i], counter); 
             rewind(file);
         }   

@@ -5,7 +5,7 @@
 
 
 
-int print_char_occurence(FILE *file); 
+int print_char_occurence(FILE *file, char* path); 
 int toDecimal(char x); 
 
 #endif 
