@@ -4,6 +4,8 @@
 
 #include "includes/tools.h"
 
+void welcome_msg();
+
 int main()
 {
     // Initialize shopping cart (dll)
@@ -15,6 +17,8 @@ int main()
     char buffer, *b_name;
     float b_price, sum;
     int b_count;
+
+    welcome_msg();
 
     // Program
     do
@@ -38,10 +42,22 @@ int main()
         {
             remove_last(&head);
         }
+        /* 
+        else if (buffer == 'x') 
+        {
+            remove_last(&head);
+        }*/
     } while (buffer != 'q');
 
     // Create receipt + free heap
     print_dll(tail);
     deallocate(&tail, &head);
     return 0;
+}
+
+void welcome_msg()
+{
+    printf("Welcome to this emulated online store!\n");
+    printf("Enter 'a' to add item to cart, 'r' to remove last added item\n");
+    printf("Enter 'q' to get the receipt of purchase\n\n");
 }
