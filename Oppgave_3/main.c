@@ -61,3 +61,11 @@ void welcome_msg()
     printf("Enter 'a' to add item to cart, 'r' to remove last added item\n");
     printf("Enter 'q' to get the receipt of purchase\n\n");
 }
+
+/*
+    DLL functionalities have been heavily insipred by a youtube-series:
+    https://www.youtube.com/watch?v=uBZHMkpsTfg&list=PLfqABt5AS4FmXeWuuNDS3XGENJO1VYGxl
+
+    Hence why the functions often have the same names though I have adapted it for
+    the purpose of the program
+*/
